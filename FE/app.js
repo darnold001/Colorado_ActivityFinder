@@ -5,16 +5,18 @@ const container = document.querySelector(".card")
 const searchbutton = document.querySelector(".searchButton")
 const lat = document.querySelector(".lat")
 const long = document.querySelector(".long")
+const dist = document.querySelector(".Dist")
 
 
 searchbutton.addEventListener('click',event =>{
     const latitude = lat.value
     const longitude = long.value
-    searchApi(latitude, longitude)
+    const distance = dist.value
+    searchApi(latitude, longitude, distance)
 })
 
-function searchApi(latitude, longitude){
-   Api = `https://www.mtbproject.com/data/get-trails?lat=${latitude}&lon=${longitude}&maxDistance=10&key=
+function searchApi(latitude, longitude, distance){
+   Api = `https://www.mtbproject.com/data/get-trails?lat=${latitude}&lon=${longitude}&maxDistance=${distance}&key=
     200542632-6cf320d9c23f0a8db10aab395888ac94`
     fetch(Api)
     .then(parseJSON)

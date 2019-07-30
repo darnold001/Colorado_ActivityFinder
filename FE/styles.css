@@ -44,8 +44,8 @@ body{
 }
 
 .searchButton {
-  width: 80px;
-  height: 40px;
+  width: 120px;
+  height: 55px;
   border: 1px solid #00B4CC;
   background: #00B4CC;
   text-align: center;
@@ -79,12 +79,12 @@ body{
     width: 100%;
     position: relative;
     top: 20%;
-    left: 10%;
+    left: 30%;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 50px;
 }
 .geobutton{
-  width: 340px;
+  width: 720px;
   height: 40px;
   border: 1px solid #00B4CC;
   background: #00B4CC;
