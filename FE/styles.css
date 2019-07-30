@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Muli&display=swap');
+
+
+body{
+  background-image: url(/image/tim-foster-wX64_Gjbclg-unsplash.jpg);
+  font-family: 'Josefin Sans', sans-serif;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.lat{
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 40px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+.long{
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 40px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 80px;
+  height: 40px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 40%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card{
+    max-width: 150px;
+    width: 30%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.title{
+    width: 100%;
+    position: relative;
+    top: 20%;
+    left: 10%;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 50px;
+}
+.geobutton{
+  width: 340px;
+  height: 40px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+
+}
