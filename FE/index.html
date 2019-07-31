@@ -2,40 +2,38 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
+    <title>MTB Trip!</title>
     <link rel="stylesheet" href="/styles.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
-
-  </head>
+   </head>
 
   <body>
-      <div class="topnav">
-          <a class="active" href="#home">Sign Up</a>
-          <a href="#news">Log In</a>
-          <a href="#contact">Log Out</a>
+      <div class="topnav"> 
+          <a href="#SavedRides" id = 'savedRides'>My Saved Rides</a>
         </div>
       
         <div class="wrap">
             <div class = "title"<h1> Welcome to MTB Trip Planner!</h1> </div>
-            <button class = "geobutton" onclick="getLocation()">Find My Coordinates</button>
-                <div class="search">
-                  <input type="text" class="lat" placeholder="Latitude">
-                  <input type="text" class="long" placeholder="Longitude">
-                  <input type="text" class="Dist" placeholder="Maximum Dist">
-                   <button class="searchButton"> GO!
-                     <i class="fa fa-search"></i>
-                  </button>
-                  
+            <div class = "name">
+            <input type="text" class="first" name="fname" placeholder="Please Enter Your First Name">
+              <input type="text" class="last" name= "lname" placeholder="Please Enter Your Last Name">
                 </div>
+                 <div class="search">
+                  <input type="text" class="lat" name= "lat" placeholder="Latitude">
+                  <input type="text" class="long" name="long" placeholder="Longitude">
+                  <input type="text" class="Dist" name="dist" placeholder="Maximum Dist">
+                   <button  name = "sbutton" class="searchButton"> GO!
+                     <i class="fa fa-search"></i>
+                      </button>
+                     </div>
+
+                  <button class = "geobutton" onclick="getLocation()">Find My Coordinates</button>
                 <h2 class = 'ridettl'>These are rides near you:</h2>
              </div>
- 
-        </div>
-        
-        <section class = "rides">
-            
-        </section>   
+            </div>
+          <section class = "rides"> 
+         </section>   
       </div>   
     <script src="/app.js"></script>
   </body>

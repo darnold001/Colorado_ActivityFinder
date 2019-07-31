@@ -14,21 +14,12 @@ ActiveRecord::Schema.define(version: 2019_07_30_140951) do
 
   create_table "trails", force: :cascade do |t|
     t.string "name"
-    t.string "summary"
-    t.string "type"
     t.string "difficulty"
-    t.float "stars"
-    t.string "location"
+    t.string "rating"
     t.string "url"
-    t.string "consitionStatus"
-    t.string "conditionDate"
     t.string "img"
-    t.float "length"
-    t.float "ascent"
-    t.float "descent"
-    t.float "lat"
-    t.float "long"
-    t.float "apiid"
+    t.string "length"
+    t.string "eChange"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,10 +29,8 @@ ActiveRecord::Schema.define(version: 2019_07_30_140951) do
   create_table "users", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
-    t.integer "trail_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["trail_id"], name: "index_users_on_trail_id"
   end
 
 end
