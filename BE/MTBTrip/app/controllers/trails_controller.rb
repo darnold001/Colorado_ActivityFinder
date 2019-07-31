@@ -9,6 +9,7 @@ class TrailsController < ApplicationController
         @trail = Trail.new
         render json: @trail
     end
+private
     def allowed_params
         params.require(:user).permit(:name, :summary, :type, :difficulty, :stars, :location,
          :url, :consitionStatus, :conditionDate, :img, :length, :ascent, :descent, :lat, :long, 
