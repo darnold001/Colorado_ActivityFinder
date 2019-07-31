@@ -6,13 +6,12 @@ class TrailsController < ApplicationController
     end
 
     def create
-        @trail = Trail.new
+        @trail = Trail.create(allowed_params)
         render json: @trail
     end
 private
     def allowed_params
-        params.require(:user).permit(:name, :summary, :type, :difficulty, :stars, :location,
-         :url, :consitionStatus, :conditionDate, :img, :length, :ascent, :descent, :lat, :long, 
-         :apiid, :user_id, :created_at, :updated_at, :user_id)
+        params.require(:trail).permit(:name, :difficulty, :rating,
+         :url, :img, :length, :eChange, :created_at, :updated_at, :user_id)
     end
 end
