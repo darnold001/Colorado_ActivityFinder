@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Muli&display=swap');
 
 
+
 body{
   background-image: url(/image/tim-foster-wX64_Gjbclg-unsplash.jpg);
   font-family: 'Josefin Sans', sans-serif;
@@ -8,6 +9,7 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  text-align: center;
   background-color: #464646;
 }
 
@@ -21,22 +23,35 @@ body{
 .lat{
   width: 100%;
   border: 3px solid #00B4CC;
-  border-right: none;
   padding: 5px;
-  height: 40px;
-  border-radius: 5px 0 0 5px;
+  margin: 5px;
+  height: 30px;
+  text-align: center;
+  border-radius: 10px 0 0 10px;
   outline: none;
-  color: #9DBFAF;
+  color: rgb(10, 15, 13);
 }
 .long{
   width: 100%;
   border: 3px solid #00B4CC;
-  border-right: none;
   padding: 5px;
-  height: 40px;
-  border-radius: 5px 0 0 5px;
+  margin: 5px;
+  height: 30px;
+  text-align: center;
   outline: none;
-  color: #9DBFAF;
+  color: rgb(10, 15, 13);
+}
+
+.Dist{
+  width: 100%;
+  border: 3px solid #00B4CC;
+  padding: 5px;
+  margin: 5px;
+  height: 30px;
+  text-align: center;
+  border-radius: 0px 10px 10px 0;
+  outline: none;
+  color: rgb(10, 15, 13);
 }
 
 .searchTerm:focus{
@@ -44,55 +59,130 @@ body{
 }
 
 .searchButton {
-  width: 120px;
-  height: 55px;
+  width: 100%;
+  height: 45px;
+  margin: 5px;
   border: 1px solid #00B4CC;
   background: #00B4CC;
   text-align: center;
   color: #fff;
-  border-radius: 0 5px 5px 0;
+  border-radius: 20px 20px 20px 20px;
   cursor: pointer;
   font-size: 20px;
   font-family: 'Josefin Sans', sans-serif;
 }
-
+.geobutton{
+  width: 100%;
+  height: 40px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  color: #fff;
+  margin: 10px;
+  position: relative;
+  border-radius: 20px 20px 20px 20px;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: 'Josefin Sans', sans-serif;
+}
 /*Resize the wrap to see the search bar change!*/
 .wrap{
   width: 40%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  text-align: center;
+  position: flex;
+  display: inline-block;
+  
 }
-
-.card{
-    max-width: 150px;
-    width: 30%;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
+.rides{
+  max-width:100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  text-align: center;
+  bottom: 80%;
+  padding: 30px;
+  margin: 40px;
+  border-radius: 10px 10px 10px 10px;
+  left: 80%;
+  background: rgba(221, 221, 221, 0.342)
 }
 
 .title{
     width: 100%;
-    position: relative;
-    top: 20%;
-    left: 30%;
+    display: inline-block;
+    text-align: center;
     font-family: 'Josefin Sans', sans-serif;
+    color: rgb(235, 230, 230);
     font-size: 50px;
 }
-.geobutton{
-  width: 720px;
-  height: 40px;
-  border: 1px solid #00B4CC;
+
+.topnav {
+  background-color: rgba(59, 58, 58, 0.027);
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.ridettl{
+  width: 100%;
+  text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
+  color: rgb(196, 190, 190);
+  font-size: 25px;
+}
+
+.imgCls{
+  width: 12vw;
+  height: 12vw;
+}
+
+.trlttl{
+  font-size: 12px;
+}
+
+.diff{
+  font-size: 10px;
+}
+
+.rtingT{
+  font-size: 11px;
+}
+
+.svBtn{
+  height: 15px;
+  margin: 5px;
+  border: 1px solid rgb(247, 247, 247);
   background: #00B4CC;
   text-align: center;
   color: #fff;
-  border-radius: 0 5px 5px 0;
+  border-radius: 20px 20px 20px 20px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 10px;
   font-family: 'Josefin Sans', sans-serif;
-
+}
+.trlUrl{
+  height: 15px;
+  margin: 5px;
+  border: 1px solid rgb(247, 247, 247);
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 20px 20px 20px 20px;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 10px;
+  font-family: 'Josefin Sans', sans-serif;
 }

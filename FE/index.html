@@ -10,29 +10,33 @@
   </head>
 
   <body>
-      <div class = "title"<h1> Welcome to MTB Trip Planner!</h1> </div>
+      <div class="topnav">
+          <a class="active" href="#home">Sign Up</a>
+          <a href="#news">Log In</a>
+          <a href="#contact">Log Out</a>
+        </div>
+      
         <div class="wrap">
+            <div class = "title"<h1> Welcome to MTB Trip Planner!</h1> </div>
             <button class = "geobutton" onclick="getLocation()">Find My Coordinates</button>
-    
-            <p id="demo"></p>
-            
-            <script>
-            
-            </script>
                 <div class="search">
-                  <input type="text" class="lat" placeholder="Latitude (ex. 40.0000)">
-                  <input type="text" class="long" placeholder="Longitude (ex. -104.0000)">
-                  <input type="text" class="Dist" placeholder="Maximum Dist (200 Miles)">
-                   <button class="searchButton">
+                  <input type="text" class="lat" placeholder="Latitude">
+                  <input type="text" class="long" placeholder="Longitude">
+                  <input type="text" class="Dist" placeholder="Maximum Dist">
+                   <button class="searchButton"> GO!
                      <i class="fa fa-search"></i>
                   </button>
+                  
                 </div>
+                <h2 class = 'ridettl'>These are rides near you:</h2>
              </div>
-       
-    <div class="card">
-        <div class="container">    
+ 
         </div>
-          </div>   
+        
+        <section class = "rides">
+            
+        </section>   
+      </div>   
     <script src="/app.js"></script>
   </body>
 </html>
