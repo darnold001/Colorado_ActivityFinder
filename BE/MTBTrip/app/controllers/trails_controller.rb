@@ -9,6 +9,11 @@ class TrailsController < ApplicationController
         @trail = Trail.create(allowed_params)
         render json: @trail
     end
+    def destroy
+        trail = Trail.find(params[:id])
+        trail.destroy
+    end
+
 private
     def allowed_params
         params.require(:trail).permit(:name, :difficulty, :rating,

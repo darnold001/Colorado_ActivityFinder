@@ -2,16 +2,19 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('%c DOM Content Loaded and Parsed!', 'color: magenta')
 
 const rides = document.querySelector(".rides")
+const sRides =  document.querySelector(".sRides")
 const searchbutton = document.querySelector(".searchButton")
 const lat = document.querySelector(".lat")
 const long = document.querySelector(".long")
 const search = document.querySelector(".search")
 const dist = document.querySelector(".Dist")
 const SaveBtn = document.querySelector(".svBtn")
+
 const savedRides = document.querySelector("#savedRides")
 const trailsDB = 'http://localhost:3000/trails'
 const userDB = 'http://localhost:3000/users'
 const showUsersDB = `http://localhost:3000/users/${localStorage.getItem('user')}`
+
 //const geoButton = document.querySelector(".geobutton")
 
 
@@ -29,11 +32,32 @@ searchbutton.addEventListener('click',event =>{
 })
 
 savedRides.addEventListener('click',event =>{
-  console.log("You Clicked My Saved Rides")
   getSavedRides()
   createSidecard()
 })
 
+rides.addEventListener("click", event =>{const SaveBtn = document.querySelector(".svBtn")
+console.log("I Was Clicked")
+
+const postItem = event.target.parentNode
+generateTrailPost(postItem)
+})
+
+sRides.addEventListener('click', event =>{const delBtn = document.querySelector(".delBtn")
+const delItem = event.target
+deleteTrailPost(delItem)
+})
+
+function deleteTrailPost(delItem){
+  console.log(delItem.dataset.id)
+  
+  fetch(`${trailsDB}/${delItem.dataset.id}`,{
+    method:'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+}
 
   function getLocation() {
     console.log(navigator.geolocation.getCurrentPosition(window.location))
@@ -79,6 +103,7 @@ function parseJSON(API){
         }
 
         function createCard(trail){
+          boxTtl = document.querySelector(".ridettl")
           const ridecrd = document.createElement("div")
           const h2 = document.createElement("h2")
           const img = document.createElement("img")
@@ -89,7 +114,8 @@ function parseJSON(API){
           const ascDesc = document.createElement("p")
           const svBttn = document.createElement("button")
           const link = document.createElement("a")
-
+  
+          boxTtl.innerText = `Hey ${localStorage.getItem('firstname')}! Here are some rides in your requested area:`
           h2.innerText = trail.name
           svBttn.innerText = "Save Me"
           trailStat.innerText = `Current Condition: ${trail.conditionStatus}`
@@ -110,8 +136,7 @@ function parseJSON(API){
           link.setAttribute("href",`${trail.url}`)
           link.innerHTML = "Info"
           link.setAttribute("class","trlUrl" )
-          ridecrd.dataset.currentUserId = 
-
+          
 
           rides.appendChild(ridecrd)
           ridecrd.appendChild(h2)
@@ -125,15 +150,9 @@ function parseJSON(API){
           ridecrd.appendChild(svBttn)
         }
 
-        rides.addEventListener("click", event =>{const SaveBtn = document.querySelector(".svBtn")
-          console.log("I Was Clicked")
-          
-          const postItem = event.target.parentNode
-          generateTrailPost(postItem)
-        })
+
 
           function generateTrailPost(postItem){
-            console.log(postItem)
             title = postItem.querySelector(".trlttl")
             difficulty = postItem.querySelector(".diff")
             rating = postItem.querySelector(".rtingT")
@@ -149,8 +168,8 @@ function parseJSON(API){
               name: title.innerText,
               difficulty: difficulty.innerText,
               rating: rating.innerText,
-              url: webAddress.innerHTML, 
-              img: image.innerText,
+              url: webAddress.href, 
+              img: image.src,
               length: trailDist.innerText,
               eChange: eChange.innerText,
               user_id: localStorage.getItem('user')
@@ -198,36 +217,81 @@ function parseJSON(API){
               function getSavedRides(){
                 fetch(showUsersDB)
                 .then(parseJSON)
-                .then(createSidecard)
+                .then(iterateAPIResponse)
               }
-              function createSidecard(result){
-                console.log(result.trails)
-              const userCard = document.createElement("div")
-              const srTitle = document.createElement("h2")
-              const simg = document.createElement("img")
-              const strailStat = document.createElement("p")
-              const slength = document.createElement("p")
-              const sdifficulty = document.createElement("p")
-              const srting = document.createElement("p")
-              const sascDesc = document.createElement("p")
-              const delBttn = document.createElement("button")
-              const slink = document.createElement("a")
+              
+              function createSidecard(trail){
+                console.log(trail)
+                const sRidecrd = document.createElement("div")
+                const srTitle = document.createElement("h2")
+                const simg = document.createElement("img")
+                const slength = document.createElement("p")
+                const sdifficulty = document.createElement("p")
+                const srting = document.createElement("p")
+                const sascDesc = document.createElement("p")
+                const update = document.createElement("button")
+                const delBttn = document.createElement("button")
+                const slink = document.createElement("a")
+                const featid = document.createElement("p")
               
                     srTitle.innerText = trail.name
+                    update.innerText = "Update"
                     delBttn.innerText = "Delete"
-                    strailStat.innerText = `Current Condition: ${trail.conditionStatus}`
-                    simg.src = trail.imgSmall
-                    sascDesc.innerText = `Elevation change: +${trail.ascent}/${trail.descent}`
-                    srting.innerText = `Rating: ${trail.stars}`
-                    sdifficulty.innerText = `Difficulty: ${trail.difficulty}`
-                    slength.innerText = `Length: ${trail.length} miles`
+                    delBttn.dataset.id = trail.id
+                    simg.src = trail.img
+                    sascDesc.innerText = trail.eChange
+                    srting.innerText = trail.rating
+                    sdifficulty.innerText = trail.difficulty
+                    slength.innerText = trail.length
+                    featid.innerText = trail.id
+                    
 
                     slink.setAttribute("href",`${trail.url}`)
                     slink.innerHTML = "Info"
                     slink.setAttribute("class","trlUrl" )
-                    
+                    srTitle.setAttribute("class", "trlttl")
 
+                    sdifficulty.setAttribute("class", "diff")
+                    sascDesc.setAttribute("class", "AscDesc")
+                    slength.setAttribute("class", "trailLength")
+                    update.setAttribute("class", "upBtn")
+                    delBttn.setAttribute("class", "delBtn")
+                    srting.setAttribute("class", "rtingT")
+                    simg.setAttribute("class", "imgCls")
+                
+
+                    sRides.appendChild(sRidecrd)
+                    sRidecrd.appendChild(srTitle)
+                    sRidecrd.appendChild(simg)
+                    sRidecrd.appendChild(sdifficulty)
+                    sRidecrd.appendChild(slength)
+                    sRidecrd.appendChild(sascDesc)
+                    sRidecrd.appendChild(srting)
+                    sRidecrd.appendChild(update)
+                    sRidecrd.appendChild(slink)
+                    sRidecrd.appendChild(delBttn)
+
+            
                   }
+                
+                  function iterateAPIResponse(result){
+                    result.trails.forEach(trail => {
+                        createSidecard(trail)
+                     });
+                        }
+              
+
+
+
+
+
+
+
+
+
+
+
+
 
               })
               

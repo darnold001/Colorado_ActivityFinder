@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>MTB Trip!</title>
+    <title>MTB Trip Planner!</title>
     <link rel="stylesheet" href="/styles.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
@@ -10,7 +10,7 @@
 
   <body>
       <div class="topnav"> 
-          <a href="#SavedRides" id = 'savedRides'>My Saved Rides</a>
+          <a  id = 'savedRides'>Your Saved Rides</a>
         </div>
       
         <div class="wrap">
@@ -29,9 +29,12 @@
                      </div>
 
                   <button class = "geobutton" onclick="getLocation()">Find My Coordinates</button>
-                <h2 class = 'ridettl'>These are rides near you:</h2>
+                <h1 class = 'ridettl'>Your saved rides:</h>
              </div>
             </div>
+            <section class = "sRides"> 
+              </section>  
+              <h1 class = 'ridettl'>Here are your search results:</h>
           <section class = "rides"> 
          </section>   
       </div>   
