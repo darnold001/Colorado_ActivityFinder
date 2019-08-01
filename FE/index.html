@@ -3,14 +3,17 @@
 <html lang="en">
   <head>
     <title>MTB Trip Planner!</title>
+    <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/image/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/styles.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
    </head>
 
   <body>
-      <div class="topnav"> 
-          <a  id = 'savedRides'>Your Saved Rides</a>
+      <div class = "topnav" > 
+          <a  id = 'savedRides'></a>
+          <a  id = 'addnote'></a>
         </div>
       
         <div class="wrap">
@@ -29,13 +32,17 @@
                      </div>
 
                   <button class = "geobutton" onclick="getLocation()">Find My Coordinates</button>
-                <h1 class = 'ridettl'>Your saved rides:</h>
+
              </div>
             </div>
-            <section class = "sRides"> 
-              </section>  
-              <h1 class = 'ridettl'>Here are your search results:</h>
-          <section class = "rides"> 
+            <h1 class = 'ridettl' id = "noteTtl"></h1>
+            <section id="note" > 
+             </section> 
+             <h1 class = 'ridettl' id = 'savedTtl'></h1>
+            <section id ='saved'> 
+           </section>  
+          <h1 class = 'ridettl' id = "sResultsTttl"></h1>
+          <section  id= "rideSearch"> 
          </section>   
       </div>   
     <script src="/app.js"></script>
