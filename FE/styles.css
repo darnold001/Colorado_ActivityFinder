@@ -104,6 +104,18 @@ body{
   left: 80%;
   background: rgba(221, 221, 221, 0.342)
 }
+.notes{
+  max-width:100%;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  bottom: 80%;
+  padding: 10px;
+  margin: 40px;
+  border-radius: 10px 10px 10px 10px;
+  left: 80%;
+  background: rgba(221, 221, 221, 0.342)
+}
 .sRides{
   max-width:100%;
   display: grid;
@@ -123,7 +135,7 @@ body{
     text-align: center;
     font-family: 'Josefin Sans', sans-serif;
     color: rgb(235, 230, 230);
-    font-size: 45px;
+    font-size: 30px;
 }
 .topnav {
   background-color: rgba(59, 58, 58, 0.027);
@@ -186,6 +198,30 @@ body{
 }
 
 .svBtn{
+  height: 15px;
+  margin: 5px;
+  border: 1px solid rgb(247, 247, 247);
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 20px 20px 20px 20px;
+  cursor: pointer;
+  font-size: 10px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+.createBtn{
+  height: 15px;
+  margin: 5px;
+  border: 1px solid rgb(247, 247, 247);
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 20px 20px 20px 20px;
+  cursor: pointer;
+  font-size: 10px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+.createPost{
   height: 15px;
   margin: 5px;
   border: 1px solid rgb(247, 247, 247);
@@ -266,3 +302,10 @@ body{
   color: rgb(10, 15, 13);
 }
 
+.noteFieldText{
+  font-family: 'Josefin Sans', sans-serif;
+  color: rgb(2, 2, 2);
+  height: 91px;
+  width: 965px;
+  font-size: 15px;
+}

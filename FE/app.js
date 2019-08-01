@@ -1,21 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
   console.log('%c DOM Content Loaded and Parsed!', 'color: magenta')
 
-const rides = document.querySelector(".rides")
-const sRides =  document.querySelector(".sRides")
+const rides = document.querySelector("#rideSearch")
+const sRides =  document.querySelector("#savedRides")
+const savedRideCont = document.querySelector("#saved")
 const searchbutton = document.querySelector(".searchButton")
 const lat = document.querySelector(".lat")
 const long = document.querySelector(".long")
 const search = document.querySelector(".search")
 const dist = document.querySelector(".Dist")
 const SaveBtn = document.querySelector(".svBtn")
-
-const savedRides = document.querySelector("#savedRides")
+const addNote = document.querySelector("#addnote")
+const noteSection = document.querySelector("#note")
 const trailsDB = 'http://localhost:3000/trails'
 const userDB = 'http://localhost:3000/users'
-const showUsersDB = `http://localhost:3000/users/${localStorage.getItem('user')}`
-
-//const geoButton = document.querySelector(".geobutton")
 
 
 searchbutton.addEventListener('click',event =>{
@@ -31,58 +29,54 @@ searchbutton.addEventListener('click',event =>{
     generateUserPost(uFirstname, uLastname)
 })
 
-savedRides.addEventListener('click',event =>{
+sRides.addEventListener('click',event =>{
+  savedRideCont.setAttribute("class","rides")
   getSavedRides()
   createSidecard()
+  createSideCardTtl()
 })
 
+addNote.addEventListener('click',event =>{
+createNoteCard()
+CreateNoteTtl()
+})
+
+
 rides.addEventListener("click", event =>{const SaveBtn = document.querySelector(".svBtn")
-console.log("I Was Clicked")
+
 
 const postItem = event.target.parentNode
 generateTrailPost(postItem)
 })
 
-sRides.addEventListener('click', event =>{const delBtn = document.querySelector(".delBtn")
-const delItem = event.target
-deleteTrailPost(delItem)
+
+
+//  function CreateNoteTtl(){
+  //  const NoteTitle = document.querySelector("#noteTtl")
+  //   NoteTitle.innerText = "Notes:"
+ // }
+
+  function createNoteCard(){
+    noteSection.setAttribute("class", "notes") 
+    const editButton = document.createElement("button")
+          editButton.setAttribute("class","createPost")
+          editButton.innerText = "Edit / Save Note"
+          noteField = document.createElement("TextArea")
+          noteField.setAttribute("class", "noteFieldText")
+          noteField.value = localStorage.getItem('note')
+    noteSection.appendChild(noteField)
+    noteSection.appendChild(editButton)
+  
+
+editButton.addEventListener('click', event =>{
+  console.log("I WAS CLICKED!!!")
+  const noteArea =document.querySelector(".noteFieldText")
+  const notes = noteArea.value
+  generateUserUpdate(notes)
 })
+} 
 
-function deleteTrailPost(delItem){
-  console.log(delItem.dataset.id)
   
-  fetch(`${trailsDB}/${delItem.dataset.id}`,{
-    method:'DELETE',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-}
-
-  function getLocation() {
-    console.log(navigator.geolocation.getCurrentPosition(window.location))
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        let lati = position.coords.latitude
-        let longi = position.coords.longitude
-        console.log(lati)
-        console.log(longi)
-        showPosition(lati, longi);
-        });
-    // navigator.geolocation.getCurrentPosition(showPosition(position));
-    } else { 
-      console.log(lat.innerHTML = "Geolocation is not supported by this browser.");
-    }
-  }
-  
-  function showPosition(lati, longi) {
-    console.log(lati)
-    console.log(longi)
-    lat.innerText = lati
-    search.appendChild(lat)
-    long.innerText = longi
-    search.appendChild(long)
-  }
 
   function searchApi(latitude, longitude, distance){
       Api = `https://www.mtbproject.com/data/get-trails?lat=39.754185&lon=-105.2305&maxDistance=100&maxResults=150&key=200542632-6cf320d9c23f0a8db10aab395888ac94`
@@ -93,17 +87,28 @@ function deleteTrailPost(delItem){
 }
 
 function parseJSON(API){
+    //console.log(API.json())
     return API.json()
     }
 
     function iterateAPI(result){
     result.trails.forEach(trail => {
         createCard(trail)
-     });
+     })
         }
 
         function createCard(trail){
-          boxTtl = document.querySelector(".ridettl")
+                
+          const navSavRide = document.querySelector('#savedRides')
+                navSavRide.innerText = "Your Saved Rides"    
+                
+          const navNotes = document.querySelector('#addnote')
+                navNotes.innerText = "Add a Note"    
+
+          // SearchResTitle = document.querySelector("#sResultsTttl")
+               //SearchResTitle.innerText = `Hey ${localStorage.getItem('firstname')}! Here are your search results:`
+
+               rides.setAttribute("class", "rides")
           const ridecrd = document.createElement("div")
           const h2 = document.createElement("h2")
           const img = document.createElement("img")
@@ -115,7 +120,6 @@ function parseJSON(API){
           const svBttn = document.createElement("button")
           const link = document.createElement("a")
   
-          boxTtl.innerText = `Hey ${localStorage.getItem('firstname')}! Here are some rides in your requested area:`
           h2.innerText = trail.name
           svBttn.innerText = "Save Me"
           trailStat.innerText = `Current Condition: ${trail.conditionStatus}`
@@ -180,23 +184,27 @@ function parseJSON(API){
             function generateUserPost(uFirstname, uLastname){
               let newUserObj = {
                 firstname: uFirstname,
-                lastname: uLastname 
+                lastname: uLastname, 
+                note: ""
                 }
                 userPostReq(newUserObj)
               }
 
-              function trailPostReq(newTrailObj){
-                fetch(trailsDB, {
-                  method:'POST',
-                  headers:{
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                  },
-                  body: JSON.stringify(newTrailObj)
-                })
+              function generateUserUpdate(notes){
+              const  firstnameO = localStorage.getItem('firstname')
+              const  lastnameO = localStorage.getItem('lastname')
+                let updateUserObj ={
+
+                  firstname: firstnameO,
+                  lastname: lastnameO,
+                  note: notes
+                }
+                userUpdateReq(updateUserObj)
               }
 
-                function userPostReq(newUserObj){
+
+
+               function userPostReq(newUserObj){
                   fetch(userDB, {
                     method:'POST',
                     headers:{
@@ -209,19 +217,60 @@ function parseJSON(API){
                     .then(saveUser)
               }
 
+              function userUpdateReq(updateUserObj){
+                const showUsersDB = `http://localhost:3000/users/${localStorage.getItem('user')}`
+                console.log(showUsersDB)
+                fetch(showUsersDB, {
+                  method:'PATCH',
+                  headers:{
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(updateUserObj)
+                })
+                  .then(parseJSON)
+                  .then(saveUser)
+                  
+            }
+
+              function trailPostReq(newTrailObj){
+                fetch(trailsDB, {
+                  method:'POST',
+                  headers:{
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(newTrailObj)
+                })
+              }
+
               function saveUser(result){
                  localStorage.setItem('user',result.id)
                  localStorage.setItem('firstname',result.firstname)
                  localStorage.setItem('lastname', result.lastname)
+                 localStorage.setItem('note', result.note)
               }
               function getSavedRides(){
+                const showUsersDB = `http://localhost:3000/users/${localStorage.getItem('user')}`
                 fetch(showUsersDB)
                 .then(parseJSON)
+                //.then(result =>{console.log(result)})
                 .then(iterateAPIResponse)
               }
+
+              function iterateAPIResponse(result){
+                result.trails.forEach(trail => { 
+                    console.log("IterateAPI",trail)
+                    createSidecard(trail)
+                 });
+                    }
+
               
               function createSidecard(trail){
-                console.log(trail)
+                
+                   const SavedRidesTtl = document.querySelector("#savedTtl")
+              SavedRidesTtl.innerText = `Hey ${localStorage.getItem('firstname')}! Here are your saved rides:`  
+                        
                 const sRidecrd = document.createElement("div")
                 const srTitle = document.createElement("h2")
                 const simg = document.createElement("img")
@@ -244,7 +293,6 @@ function parseJSON(API){
                     sdifficulty.innerText = trail.difficulty
                     slength.innerText = trail.length
                     featid.innerText = trail.id
-                    
 
                     slink.setAttribute("href",`${trail.url}`)
                     slink.innerHTML = "Info"
@@ -258,9 +306,8 @@ function parseJSON(API){
                     delBttn.setAttribute("class", "delBtn")
                     srting.setAttribute("class", "rtingT")
                     simg.setAttribute("class", "imgCls")
-                
 
-                    sRides.appendChild(sRidecrd)
+                    savedRideCont.appendChild(sRidecrd)
                     sRidecrd.appendChild(srTitle)
                     sRidecrd.appendChild(simg)
                     sRidecrd.appendChild(sdifficulty)
@@ -271,25 +318,54 @@ function parseJSON(API){
                     sRidecrd.appendChild(slink)
                     sRidecrd.appendChild(delBttn)
 
+
+
+
+              delBttn.addEventListener('click', event =>{const delBtn = document.querySelector(".delBtn")
+              const delItem = event.target
+                deleteTrailPost(delItem)
+                    })
+
+              function deleteTrailPost(delItem){
+                  fetch(`${trailsDB}/${delItem.dataset.id}`,{
+                     method:'DELETE',
+                    headers: {
+                     'Content-Type': 'application/json'
+                        }
+                      })
+                    }
             
                   }
                 
-                  function iterateAPIResponse(result){
-                    result.trails.forEach(trail => {
-                        createSidecard(trail)
-                     });
-                        }
+
               
 
 
 
-
-
-
-
-
-
-
+                        function getLocation() {
+                          console.log(navigator.geolocation.getCurrentPosition(window.location))
+                          if ("geolocation" in navigator) {
+                            navigator.geolocation.getCurrentPosition(function(position) {
+                              let lati = position.coords.latitude
+                              let longi = position.coords.longitude
+                              console.log(lati)
+                              console.log(longi)
+                              showPosition(lati, longi);
+                              });
+                          // navigator.geolocation.getCurrentPosition(showPosition(position));
+                          } else { 
+                            console.log(lat.innerHTML = "Geolocation is not supported by this browser.");
+                          }
+                        }
+                        
+                        function showPosition(lati, longi) {
+                          console.log(lati)
+                          console.log(longi)
+                          lat.innerText = lati
+                          search.appendChild(lat)
+                          long.innerText = longi
+                          search.appendChild(long)
+                        }
 
 
 

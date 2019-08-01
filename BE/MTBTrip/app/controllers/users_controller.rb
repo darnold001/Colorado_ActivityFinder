@@ -17,10 +17,18 @@ class UsersController < ApplicationController
     render json: @user
     end
 
+    def update
+        @user = User.find(params[:id])
+        @user.note = params[:note]
+        @user.save
+        render json: @user
+
+    end
+
 
 private
     def allowed_params
-        params.require(:user).permit(:firstname, :lastname)
+        params.require(:user).permit(:firstname, :lastname, :note)
     end
 
 end
