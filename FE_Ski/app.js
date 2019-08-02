@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
 
     function searchApi(latitude, longitude, distance){
-          Api = `https://www.mtbproject.com/data/get-trails?lat=39.754185&lon=-105.2305&maxDistance=100&maxResults=150&key=200542632-6cf320d9c23f0a8db10aab395888ac94`
+          Api = `https://www.powderproject.com/data/get-trails?lat=39.754185&lon=-105.2305&maxDistance=100&maxResults=150&key=200542632-6cf320d9c23f0a8db10aab395888ac94`
         //Api = https://www.mtbproject.com/data/get-trails?lat=${latitude}&lon=${longitude}&maxDistance=${distance}&maxResults=75&key=200542632-6cf320d9c23f0a8db10aab395888ac94`
           fetch(Api)
           .then(parseJSON)
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function createCard(trail){
               
       const navSavRide = document.querySelector('#savedRides')
-            navSavRide.innerText = "Your Saved Rides"    
+            navSavRide.innerText = "Your Saved Runs"    
             
       const navNotes = document.querySelector('#addnote')
             navNotes.innerText = "Add a Note"    
@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
     function createSidecard(trail){
       const SavedRidesTtl = document.querySelector("#savedTtl")
-            SavedRidesTtl.innerText = `Hey ${capitalizer(localStorage.getItem('firstname'))}! Here are your saved rides:`  
+            SavedRidesTtl.innerText = `Hey ${capitalizer(localStorage.getItem('firstname'))}! Here are your saved runs:`  
               
       const sRidecrd = document.createElement("div")
       const srTitle = document.createElement("h2")

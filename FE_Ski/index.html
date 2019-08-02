@@ -1,0 +1,50 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Ski Trip Planner!</title>
+    <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/image/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/styles.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+   </head>
+
+  <body>
+      <div class = "topnav" > 
+          <a  id = 'savedRides'></a>
+          <a  id = 'addnote'></a>
+        </div>
+      
+        <div class="wrap">
+            <div class = "title"<h1> Welcome to Ski Trip Planner!</h1> </div>
+            <div class = "name">
+            <input type="text" class="first" name="fname" placeholder="Please Enter Your First Name">
+              <input type="text" class="last" name= "lname" placeholder="Please Enter Your Last Name">
+                </div>
+                 <div class="search">
+                  <input type="text" class="lat" name= "lat" placeholder="Latitude">
+                  <input type="text" class="long" name="long" placeholder="Longitude">
+                  <input type="text" class="Dist" name="dist" placeholder="Maximum Dist">
+                   <button  name = "sbutton" class="searchButton"> GO!
+                     <i class="fa fa-search"></i>
+                      </button>
+                     </div>
+
+                  <button class = "geobutton" onclick="getLocation()">Find My Coordinates</button>
+
+             </div>
+            </div>
+            <h1 class = 'ridettl' id = "noteTtl"></h1>
+            <section id="note" > 
+             </section> 
+             <h1 class = 'ridettl' id = 'savedTtl'></h1>
+            <section id ='saved'> 
+           </section>  
+          <h1 class = 'ridettl' id = "sResultsTttl"></h1>
+          <section  id= "rideSearch"> 
+         </section>   
+      </div>   
+    <script src="/app.js"></script>
+  </body>
+</html>
