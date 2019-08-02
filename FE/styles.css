@@ -304,8 +304,10 @@ body{
 
 .noteFieldText{
   font-family: 'Josefin Sans', sans-serif;
-  color: rgb(2, 2, 2);
+  color: rgb(252, 248, 248);
   height: 91px;
-  width: 965px;
+  width: 850px;
   font-size: 15px;
+  display: flex;
+  background: #464646b0
 }

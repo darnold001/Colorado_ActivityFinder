@@ -30,10 +30,8 @@ searchbutton.addEventListener('click',event =>{
 })
 
 sRides.addEventListener('click',event =>{
-  savedRideCont.setAttribute("class","rides")
-  getSavedRides()
-  createSidecard()
-  createSideCardTtl()
+ SavedCardRunner()
+ createSideCardTtl()
 })
 
 addNote.addEventListener('click',event =>{
@@ -43,12 +41,17 @@ CreateNoteTtl()
 
 
 rides.addEventListener("click", event =>{const SaveBtn = document.querySelector(".svBtn")
-
-
 const postItem = event.target.parentNode
 generateTrailPost(postItem)
+SavedCardRunner()
+createSideCardTtl()
 })
 
+function SavedCardRunner(){
+  savedRideCont.setAttribute("class","rides")
+  getSavedRides()
+  createSidecard()
+}
 
 
 //  function CreateNoteTtl(){
@@ -213,6 +216,7 @@ function parseJSON(API){
                     },
                     body: JSON.stringify(newUserObj)
                   })
+                
                     .then(parseJSON)
                     .then(saveUser)
               }
@@ -246,8 +250,8 @@ function parseJSON(API){
 
               function saveUser(result){
                  localStorage.setItem('user',result.id)
-                 localStorage.setItem('firstname',result.firstname)
-                 localStorage.setItem('lastname', result.lastname)
+                 localStorage.setItem('firstname',result.firstname.toLowerCase())
+                 localStorage.setItem('lastname', result.lastname.toLowerCase())
                  localStorage.setItem('note', result.note)
               }
               function getSavedRides(){
@@ -269,7 +273,7 @@ function parseJSON(API){
               function createSidecard(trail){
                 
                    const SavedRidesTtl = document.querySelector("#savedTtl")
-              SavedRidesTtl.innerText = `Hey ${localStorage.getItem('firstname')}! Here are your saved rides:`  
+              SavedRidesTtl.innerText = `Hey ${capitalizer(localStorage.getItem('firstname'))}! Here are your saved rides:`  
                         
                 const sRidecrd = document.createElement("div")
                 const srTitle = document.createElement("h2")
@@ -278,13 +282,11 @@ function parseJSON(API){
                 const sdifficulty = document.createElement("p")
                 const srting = document.createElement("p")
                 const sascDesc = document.createElement("p")
-                const update = document.createElement("button")
                 const delBttn = document.createElement("button")
                 const slink = document.createElement("a")
                 const featid = document.createElement("p")
               
                     srTitle.innerText = trail.name
-                    update.innerText = "Update"
                     delBttn.innerText = "Delete"
                     delBttn.dataset.id = trail.id
                     simg.src = trail.img
@@ -302,7 +304,6 @@ function parseJSON(API){
                     sdifficulty.setAttribute("class", "diff")
                     sascDesc.setAttribute("class", "AscDesc")
                     slength.setAttribute("class", "trailLength")
-                    update.setAttribute("class", "upBtn")
                     delBttn.setAttribute("class", "delBtn")
                     srting.setAttribute("class", "rtingT")
                     simg.setAttribute("class", "imgCls")
@@ -314,7 +315,6 @@ function parseJSON(API){
                     sRidecrd.appendChild(slength)
                     sRidecrd.appendChild(sascDesc)
                     sRidecrd.appendChild(srting)
-                    sRidecrd.appendChild(update)
                     sRidecrd.appendChild(slink)
                     sRidecrd.appendChild(delBttn)
 
@@ -323,7 +323,10 @@ function parseJSON(API){
 
               delBttn.addEventListener('click', event =>{const delBtn = document.querySelector(".delBtn")
               const delItem = event.target
+                sRidecrd.remove(delItem)
                 deleteTrailPost(delItem)
+                
+
                     })
 
               function deleteTrailPost(delItem){
@@ -337,10 +340,6 @@ function parseJSON(API){
             
                   }
                 
-
-              
-
-
 
                         function getLocation() {
                           console.log(navigator.geolocation.getCurrentPosition(window.location))
@@ -365,6 +364,10 @@ function parseJSON(API){
                           search.appendChild(lat)
                           long.innerText = longi
                           search.appendChild(long)
+                        }
+
+                        function capitalizer(string){
+                          return string.charAt(0).toUpperCase() + string.slice(1)
                         }
 
 
