@@ -17,7 +17,7 @@ Thanks for checking it out!
    4. Please open another terminal window and navigate to the back up to the 'FE' folder of the current directory and enter it. Once inside of the directory, please      enter ```lite-server``` to start your frontend file server.
    ![](Lite-Server.gif)
    4. Have fun!
-    ###### if you don't have lite-server, get it here! [Link to Lite-Server!](https://www.npmjs.com/package/lite-server)
+   ###### if you don't have lite-server, get it here! [Link to Lite-Server!](https://www.npmjs.com/package/lite-server)
    ###### if you don't have bundler or ruby, get it here! [Link to Bundler!](https://bundler.io/), [Link to Ruby!](https://www.ruby-lang.org/en/downloads/)
 
 ## Basic flow of app
