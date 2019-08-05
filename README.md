@@ -11,11 +11,11 @@ Thanks for checking it out!
 ## Installation
    1. Clone our repo into the directory where you want the app
    2. If you have bundler, run a ```bundle install``` in the BE/MTBTrip directory the app to innstall all necessary Ruby/Rails assets
-  ![](FolderChange.gif)
+  ![](GIFs/FolderChange.gif)
    3. Once all necessary gems have been installed, please run ```rails s``` to start the backend file server
-   ![](Rails s.gif)
+   ![](GIFs/Rails s.gif)
    4. Please open another terminal window and navigate to the back up to the 'FE' folder of the current directory and enter it. Once inside of the directory, please      enter ```lite-server``` to start your frontend file server.
-   ![](Lite-Server.gif)
+   ![](GIFs/Lite-Server.gif)
    4. Have fun!
    ###### if you don't have lite-server, get it here! [Link to Lite-Server!](https://www.npmjs.com/package/lite-server)
    ###### if you don't have bundler or ruby, get it here! [Link to Bundler!](https://bundler.io/), [Link to Ruby!](https://www.ruby-lang.org/en/downloads/)
@@ -29,11 +29,11 @@ Thanks for checking it out!
 ### Your Saved Rides
    * This option will present the user with all of their saved trails/runs.
    * The user will now have the option to remove certain trails from their profile, as well as get more information on their currently saved trails.
-  ![](SaveARide.gif)
+  ![](GIFs/SaveARide.gif)
 
 ### Add a Note
    * On a click, this presents the user with a window in which they can take notes about certain routes or their general plan, which is then saved to their profile      for future use.
-![](Notes.gif)
+![](GIFs/Notes.gif)
 
 ### Model
 
