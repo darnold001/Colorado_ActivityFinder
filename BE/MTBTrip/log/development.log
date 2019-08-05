@@ -14321,3 +14321,573 @@ Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
 ActiveRecord::RecordNotFound (Couldn't find Trail with 'id'=68):
   
 app/controllers/trails_controller.rb:13:in `destroy'
+Started POST "/users" for ::1 at 2019-08-02 13:50:28 -0600
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Arnold/.rvm/gems/ruby-2.6.1/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#create as JSON
+  Parameters: {"firstname"=>"Test", "lastname"=>"User", "note"=>"", "user"=>{"firstname"=>"Test", "lastname"=>"User", "note"=>""}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."firstname" = ? AND "users"."lastname" = ? LIMIT ?[0m  [["firstname", "Test"], ["lastname", "User"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:15
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("firstname", "lastname", "note", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["firstname", "Test"], ["lastname", "User"], ["note", ""], ["created_at", "2019-08-02 19:50:28.608027"], ["updated_at", "2019-08-02 19:50:28.608027"]]
+  ↳ app/controllers/users_controller.rb:15
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:15
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/users" for ::1 at 2019-08-02 13:51:51 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>"", "user"=>{"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>""}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."firstname" = ? AND "users"."lastname" = ? LIMIT ?[0m  [["firstname", "Devin"], ["lastname", "Arnold"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/users" for ::1 at 2019-08-02 13:53:33 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"firstname"=>"Test", "lastname"=>"User", "note"=>"", "user"=>{"firstname"=>"Test", "lastname"=>"User", "note"=>""}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."firstname" = ? AND "users"."lastname" = ? LIMIT ?[0m  [["firstname", "Test"], ["lastname", "User"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/trails" for ::1 at 2019-08-02 13:53:36 -0600
+Started GET "/users/5" for ::1 at 2019-08-02 13:53:36 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.1ms)
+
+
+  
+Bootsnap::LoadPathCache::Store::NestedTransactionError (Bootsnap::LoadPathCache::Store::NestedTransactionError):
+  
+app/controllers/users_controller.rb:9:in `show'
+Processing by TrailsController#create as JSON
+  Parameters: {"name"=>"Mag 7", "difficulty"=>"Difficulty: black", "rating"=>"Rating: 4.6", "url"=>"https://www.mtbproject.com/trail/652241/mag-7", "img"=>"https://cdn-files.apstatic.com/mtb/7002717_small_1561475841.jpg", "length"=>"Length: 21.2 miles", "eChange"=>"Elevation change: +1294/-3331", "user_id"=>"5", "trail"=>{"name"=>"Mag 7", "difficulty"=>"Difficulty: black", "rating"=>"Rating: 4.6", "url"=>"https://www.mtbproject.com/trail/652241/mag-7", "img"=>"https://cdn-files.apstatic.com/mtb/7002717_small_1561475841.jpg", "length"=>"Length: 21.2 miles", "eChange"=>"Elevation change: +1294/-3331", "user_id"=>"5"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[36mTrail Create (0.2ms)[0m  [1m[32mINSERT INTO "trails" ("name", "difficulty", "rating", "url", "img", "length", "eChange", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Mag 7"], ["difficulty", "Difficulty: black"], ["rating", "Rating: 4.6"], ["url", "https://www.mtbproject.com/trail/652241/mag-7"], ["img", "https://cdn-files.apstatic.com/mtb/7002717_small_1561475841.jpg"], ["length", "Length: 21.2 miles"], ["eChange", "Elevation change: +1294/-3331"], ["user_id", 5], ["created_at", "2019-08-02 19:53:36.225623"], ["updated_at", "2019-08-02 19:53:36.225623"]]
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/trails_controller.rb:9
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/trails" for ::1 at 2019-08-02 13:53:38 -0600
+Started GET "/users/5" for ::1 at 2019-08-02 13:53:38 -0600
+Processing by TrailsController#create as JSON
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"5"}
+  Parameters: {"name"=>"Porcupine Rim", "difficulty"=>"Difficulty: black", "rating"=>"Rating: 4.7", "url"=>"https://www.mtbproject.com/trail/157369/porcupine-rim", "img"=>"https://img.youtube.com/vi/t5nCdl3OLBo/hqdefault.jpg", "length"=>"Length: 14.7 miles", "eChange"=>"Elevation change: +1195/-2962", "user_id"=>"5", "trail"=>{"name"=>"Porcupine Rim", "difficulty"=>"Difficulty: black", "rating"=>"Rating: 4.7", "url"=>"https://www.mtbproject.com/trail/157369/porcupine-rim", "img"=>"https://img.youtube.com/vi/t5nCdl3OLBo/hqdefault.jpg", "length"=>"Length: 14.7 miles", "eChange"=>"Elevation change: +1195/-2962", "user_id"=>"5"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:8
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[36mTrail Load (0.1ms)[0m  [1m[34mSELECT "trails".* FROM "trails" WHERE "trails"."user_id" = ?[0m  [["user_id", 5]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  ↳ app/controllers/trails_controller.rb:9
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.2ms)
+
+
+  [1m[36mTrail Create (0.3ms)[0m  [1m[32mINSERT INTO "trails" ("name", "difficulty", "rating", "url", "img", "length", "eChange", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Porcupine Rim"], ["difficulty", "Difficulty: black"], ["rating", "Rating: 4.7"], ["url", "https://www.mtbproject.com/trail/157369/porcupine-rim"], ["img", "https://img.youtube.com/vi/t5nCdl3OLBo/hqdefault.jpg"], ["length", "Length: 14.7 miles"], ["eChange", "Elevation change: +1195/-2962"], ["user_id", 5], ["created_at", "2019-08-02 19:53:38.083384"], ["updated_at", "2019-08-02 19:53:38.083384"]]
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/trails_controller.rb:9
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/users" for ::1 at 2019-08-02 13:57:57 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>"", "user"=>{"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>""}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."firstname" = ? AND "users"."lastname" = ? LIMIT ?[0m  [["firstname", "Devin"], ["lastname", "Arnold"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/trails" for ::1 at 2019-08-02 13:58:05 -0600
+Processing by TrailsController#create as JSON
+  Parameters: {"name"=>"Silver Couloir", "difficulty"=>"Difficulty: blueBlack", "rating"=>"Rating: 4.5", "url"=>"https://www.powderproject.com/trail/7000493/silver-couloir", "img"=>"https://cdn-files.apstatic.com/ski/7000661_small_1553889195.jpg", "length"=>"Length: 2.1 miles", "eChange"=>"Elevation change: +309/-3016", "user_id"=>"1", "trail"=>{"name"=>"Silver Couloir", "difficulty"=>"Difficulty: blueBlack", "rating"=>"Rating: 4.5", "url"=>"https://www.powderproject.com/trail/7000493/silver-couloir", "img"=>"https://cdn-files.apstatic.com/ski/7000661_small_1553889195.jpg", "length"=>"Length: 2.1 miles", "eChange"=>"Elevation change: +309/-3016", "user_id"=>"1"}}
+Started GET "/users/1" for ::1 at 2019-08-02 13:58:05 -0600
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[36mTrail Create (0.3ms)[0m  [1m[32mINSERT INTO "trails" ("name", "difficulty", "rating", "url", "img", "length", "eChange", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Silver Couloir"], ["difficulty", "Difficulty: blueBlack"], ["rating", "Rating: 4.5"], ["url", "https://www.powderproject.com/trail/7000493/silver-couloir"], ["img", "https://cdn-files.apstatic.com/ski/7000661_small_1553889195.jpg"], ["length", "Length: 2.1 miles"], ["eChange", "Elevation change: +309/-3016"], ["user_id", 1], ["created_at", "2019-08-02 19:58:05.318093"], ["updated_at", "2019-08-02 19:58:05.318093"]]
+Processing by UsersController#show as */*
+  ↳ app/controllers/trails_controller.rb:9
+  Parameters: {"id"=>"1"}
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.4ms)
+
+
+  ↳ app/controllers/users_controller.rb:8
+  [1m[36mTrail Load (0.1ms)[0m  [1m[34mSELECT "trails".* FROM "trails" WHERE "trails"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:9
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/trails/71" for ::1 at 2019-08-02 13:58:07 -0600
+Processing by TrailsController#destroy as */*
+  Parameters: {"id"=>"71", "trail"=>{}}
+  [1m[36mTrail Load (0.1ms)[0m  [1m[34mSELECT  "trails".* FROM "trails" WHERE "trails"."id" = ? LIMIT ?[0m  [["id", 71], ["LIMIT", 1]]
+  ↳ app/controllers/trails_controller.rb:13
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/trails_controller.rb:14
+  [1m[36mTrail Destroy (0.3ms)[0m  [1m[31mDELETE FROM "trails" WHERE "trails"."id" = ?[0m  [["id", 71]]
+  ↳ app/controllers/trails_controller.rb:14
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/trails_controller.rb:14
+Completed 204 No Content in 3ms (ActiveRecord: 1.6ms)
+
+
+Started POST "/users" for ::1 at 2019-08-02 14:15:50 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>"", "user"=>{"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>""}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."firstname" = ? AND "users"."lastname" = ? LIMIT ?[0m  [["firstname", "Devin"], ["lastname", "Arnold"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/users/1" for ::1 at 2019-08-02 14:15:58 -0600
+Processing by UsersController#update as JSON
+  Parameters: {"firstname"=>"devin", "lastname"=>"arnold", "note"=>"This is a test", "id"=>"1", "user"=>{"firstname"=>"devin", "lastname"=>"arnold", "note"=>"This is a test"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "note" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["note", "This is a test"], ["updated_at", "2019-08-02 20:15:58.423304"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:23
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:23
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/users" for ::1 at 2019-08-02 14:16:04 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>"", "user"=>{"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>""}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."firstname" = ? AND "users"."lastname" = ? LIMIT ?[0m  [["firstname", "Devin"], ["lastname", "Arnold"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/users" for ::1 at 2019-08-02 14:21:28 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"firstname"=>"Test", "lastname"=>"User", "note"=>"", "user"=>{"firstname"=>"Test", "lastname"=>"User", "note"=>""}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."firstname" = ? AND "users"."lastname" = ? LIMIT ?[0m  [["firstname", "Test"], ["lastname", "User"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/trails" for ::1 at 2019-08-02 14:21:35 -0600
+Started GET "/users/5" for ::1 at 2019-08-02 14:21:35 -0600
+Processing by TrailsController#create as JSON
+  Parameters: {"name"=>"Klondike Bluff Outer Loop", "difficulty"=>"Difficulty: blue", "rating"=>"Rating: 4.1", "url"=>"https://www.mtbproject.com/trail/616805/klondike-bluff-outer-loop", "img"=>"https://cdn-files.apstatic.com/mtb/7002547_small_1554403224.jpg", "length"=>"Length: 14.6 miles", "eChange"=>"Elevation change: +1213/-1214", "user_id"=>"5", "trail"=>{"name"=>"Klondike Bluff Outer Loop", "difficulty"=>"Difficulty: blue", "rating"=>"Rating: 4.1", "url"=>"https://www.mtbproject.com/trail/616805/klondike-bluff-outer-loop", "img"=>"https://cdn-files.apstatic.com/mtb/7002547_small_1554403224.jpg", "length"=>"Length: 14.6 miles", "eChange"=>"Elevation change: +1213/-1214", "user_id"=>"5"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/trails_controller.rb:9
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/trails_controller.rb:9
+  ↳ app/controllers/users_controller.rb:8
+  [1m[36mTrail Create (0.3ms)[0m  [1m[32mINSERT INTO "trails" ("name", "difficulty", "rating", "url", "img", "length", "eChange", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Klondike Bluff Outer Loop"], ["difficulty", "Difficulty: blue"], ["rating", "Rating: 4.1"], ["url", "https://www.mtbproject.com/trail/616805/klondike-bluff-outer-loop"], ["img", "https://cdn-files.apstatic.com/mtb/7002547_small_1554403224.jpg"], ["length", "Length: 14.6 miles"], ["eChange", "Elevation change: +1213/-1214"], ["user_id", 5], ["created_at", "2019-08-02 20:21:35.742944"], ["updated_at", "2019-08-02 20:21:35.742944"]]
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[36mTrail Load (0.1ms)[0m  [1m[34mSELECT "trails".* FROM "trails" WHERE "trails"."user_id" = ?[0m  [["user_id", 5]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:9
+  ↳ app/controllers/trails_controller.rb:9
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.2ms)
+
+
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/users" for ::1 at 2019-08-02 14:21:47 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"firstname"=>"Test", "lastname"=>"User", "note"=>"", "user"=>{"firstname"=>"Test", "lastname"=>"User", "note"=>""}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."firstname" = ? AND "users"."lastname" = ? LIMIT ?[0m  [["firstname", "Test"], ["lastname", "User"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/users/5" for ::1 at 2019-08-02 14:21:58 -0600
+Processing by UsersController#update as JSON
+  Parameters: {"firstname"=>"test", "lastname"=>"user", "note"=>"test", "id"=>"5", "user"=>{"firstname"=>"test", "lastname"=>"user", "note"=>"test"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "note" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["note", "test"], ["updated_at", "2019-08-02 20:21:58.191406"], ["id", 5]]
+  ↳ app/controllers/users_controller.rb:23
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:23
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/users" for ::1 at 2019-08-02 14:22:06 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"firstname"=>"", "lastname"=>"", "note"=>"", "user"=>{"firstname"=>"", "lastname"=>"", "note"=>""}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."firstname" = ? AND "users"."lastname" = ? LIMIT ?[0m  [["firstname", ""], ["lastname", ""], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/trails" for ::1 at 2019-08-02 14:22:09 -0600
+Processing by TrailsController#create as JSON
+  Parameters: {"name"=>"Cross Couloir", "difficulty"=>"Difficulty: black", "rating"=>"Rating: 5", "url"=>"https://www.powderproject.com/trail/7000835/cross-couloir", "img"=>"https://cdn-files.apstatic.com/ski/7001001_small_1553893491.jpg", "length"=>"Length: 0.6 miles", "eChange"=>"Elevation change: +0/-1465", "user_id"=>"2", "trail"=>{"name"=>"Cross Couloir", "difficulty"=>"Difficulty: black", "rating"=>"Rating: 5", "url"=>"https://www.powderproject.com/trail/7000835/cross-couloir", "img"=>"https://cdn-files.apstatic.com/ski/7001001_small_1553893491.jpg", "length"=>"Length: 0.6 miles", "eChange"=>"Elevation change: +0/-1465", "user_id"=>"2"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[36mTrail Create (0.3ms)[0m  [1m[32mINSERT INTO "trails" ("name", "difficulty", "rating", "url", "img", "length", "eChange", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Cross Couloir"], ["difficulty", "Difficulty: black"], ["rating", "Rating: 5"], ["url", "https://www.powderproject.com/trail/7000835/cross-couloir"], ["img", "https://cdn-files.apstatic.com/ski/7001001_small_1553893491.jpg"], ["length", "Length: 0.6 miles"], ["eChange", "Elevation change: +0/-1465"], ["user_id", 2], ["created_at", "2019-08-02 20:22:09.705557"], ["updated_at", "2019-08-02 20:22:09.705557"]]
+Started GET "/users/2" for ::1 at 2019-08-02 14:22:09 -0600
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/trails_controller.rb:9
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.2ms)
+
+
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8
+  [1m[36mTrail Load (0.1ms)[0m  [1m[34mSELECT "trails".* FROM "trails" WHERE "trails"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:9
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/trails/73" for ::1 at 2019-08-02 14:22:12 -0600
+Processing by TrailsController#destroy as */*
+  Parameters: {"id"=>"73", "trail"=>{}}
+  [1m[36mTrail Load (0.2ms)[0m  [1m[34mSELECT  "trails".* FROM "trails" WHERE "trails"."id" = ? LIMIT ?[0m  [["id", 73], ["LIMIT", 1]]
+  ↳ app/controllers/trails_controller.rb:13
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/trails_controller.rb:14
+  [1m[36mTrail Destroy (0.3ms)[0m  [1m[31mDELETE FROM "trails" WHERE "trails"."id" = ?[0m  [["id", 73]]
+  ↳ app/controllers/trails_controller.rb:14
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/trails_controller.rb:14
+Completed 204 No Content in 3ms (ActiveRecord: 1.5ms)
+
+
+Started DELETE "/trails/65" for ::1 at 2019-08-02 16:24:29 -0600
+Processing by TrailsController#destroy as */*
+  Parameters: {"id"=>"65", "trail"=>{}}
+  [1m[36mTrail Load (0.1ms)[0m  [1m[34mSELECT  "trails".* FROM "trails" WHERE "trails"."id" = ? LIMIT ?[0m  [["id", 65], ["LIMIT", 1]]
+  ↳ app/controllers/trails_controller.rb:13
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/trails_controller.rb:14
+  [1m[36mTrail Destroy (0.3ms)[0m  [1m[31mDELETE FROM "trails" WHERE "trails"."id" = ?[0m  [["id", 65]]
+  ↳ app/controllers/trails_controller.rb:14
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/trails_controller.rb:14
+Completed 204 No Content in 3ms (ActiveRecord: 1.2ms)
+
+
+Started DELETE "/trails/66" for ::1 at 2019-08-02 16:24:30 -0600
+Processing by TrailsController#destroy as */*
+  Parameters: {"id"=>"66", "trail"=>{}}
+  [1m[36mTrail Load (0.1ms)[0m  [1m[34mSELECT  "trails".* FROM "trails" WHERE "trails"."id" = ? LIMIT ?[0m  [["id", 66], ["LIMIT", 1]]
+  ↳ app/controllers/trails_controller.rb:13
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/trails_controller.rb:14
+  [1m[36mTrail Destroy (0.4ms)[0m  [1m[31mDELETE FROM "trails" WHERE "trails"."id" = ?[0m  [["id", 66]]
+  ↳ app/controllers/trails_controller.rb:14
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/trails_controller.rb:14
+Completed 204 No Content in 3ms (ActiveRecord: 1.5ms)
+
+
+Started POST "/trails" for ::1 at 2019-08-02 16:24:32 -0600
+Processing by TrailsController#create as JSON
+Started GET "/users/2" for ::1 at 2019-08-02 16:24:32 -0600
+  Parameters: {"name"=>"Silver Couloir", "difficulty"=>"Difficulty: blueBlack", "rating"=>"Rating: 4.5", "url"=>"https://www.powderproject.com/trail/7000493/silver-couloir", "img"=>"https://cdn-files.apstatic.com/ski/7000661_small_1553889195.jpg", "length"=>"Length: 2.1 miles", "eChange"=>"Elevation change: +309/-3016", "user_id"=>"2", "trail"=>{"name"=>"Silver Couloir", "difficulty"=>"Difficulty: blueBlack", "rating"=>"Rating: 4.5", "url"=>"https://www.powderproject.com/trail/7000493/silver-couloir", "img"=>"https://cdn-files.apstatic.com/ski/7000661_small_1553889195.jpg", "length"=>"Length: 2.1 miles", "eChange"=>"Elevation change: +309/-3016", "user_id"=>"2"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Processing by UsersController#show as */*
+  ↳ app/controllers/trails_controller.rb:9
+  Parameters: {"id"=>"2"}
+  [1m[36mTrail Create (0.3ms)[0m  [1m[32mINSERT INTO "trails" ("name", "difficulty", "rating", "url", "img", "length", "eChange", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Silver Couloir"], ["difficulty", "Difficulty: blueBlack"], ["rating", "Rating: 4.5"], ["url", "https://www.powderproject.com/trail/7000493/silver-couloir"], ["img", "https://cdn-files.apstatic.com/ski/7000661_small_1553889195.jpg"], ["length", "Length: 2.1 miles"], ["eChange", "Elevation change: +309/-3016"], ["user_id", 2], ["created_at", "2019-08-02 22:24:32.360676"], ["updated_at", "2019-08-02 22:24:32.360676"]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:8
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[36mTrail Load (0.2ms)[0m  [1m[34mSELECT "trails".* FROM "trails" WHERE "trails"."user_id" = ?[0m  [["user_id", 2]]
+Completed 200 OK in 9ms (Views: 0.6ms | ActiveRecord: 1.5ms)
+
+
+  ↳ app/controllers/users_controller.rb:9
+Completed 200 OK in 7ms (Views: 4.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/trails" for ::1 at 2019-08-02 16:24:34 -0600
+Started GET "/users/2" for ::1 at 2019-08-02 16:24:34 -0600
+Processing by TrailsController#create as JSON
+  Parameters: {"name"=>"Oh What Big Eyes You Have Couloir", "difficulty"=>"Difficulty: black", "rating"=>"Rating: 5", "url"=>"https://www.powderproject.com/trail/7000172/oh-what-big-eyes-you-have-couloir", "img"=>"https://cdn-files.apstatic.com/ski/7000637_small_1553889158.jpg", "length"=>"Length: 0.5 miles", "eChange"=>"Elevation change: +3/-1821", "user_id"=>"2", "trail"=>{"name"=>"Oh What Big Eyes You Have Couloir", "difficulty"=>"Difficulty: black", "rating"=>"Rating: 5", "url"=>"https://www.powderproject.com/trail/7000172/oh-what-big-eyes-you-have-couloir", "img"=>"https://cdn-files.apstatic.com/ski/7000637_small_1553889158.jpg", "length"=>"Length: 0.5 miles", "eChange"=>"Elevation change: +3/-1821", "user_id"=>"2"}}
+Processing by UsersController#show as */*
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8
+  [1m[36mTrail Load (0.1ms)[0m  [1m[34mSELECT "trails".* FROM "trails" WHERE "trails"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/controllers/trails_controller.rb:9
+  ↳ app/controllers/users_controller.rb:9
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.2ms)
+
+
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[36mTrail Create (0.5ms)[0m  [1m[32mINSERT INTO "trails" ("name", "difficulty", "rating", "url", "img", "length", "eChange", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Oh What Big Eyes You Have Couloir"], ["difficulty", "Difficulty: black"], ["rating", "Rating: 5"], ["url", "https://www.powderproject.com/trail/7000172/oh-what-big-eyes-you-have-couloir"], ["img", "https://cdn-files.apstatic.com/ski/7000637_small_1553889158.jpg"], ["length", "Length: 0.5 miles"], ["eChange", "Elevation change: +3/-1821"], ["user_id", 2], ["created_at", "2019-08-02 22:24:34.688957"], ["updated_at", "2019-08-02 22:24:34.688957"]]
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/trails_controller.rb:9
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/users" for ::1 at 2019-08-02 19:28:53 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>"", "user"=>{"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."firstname" = ? AND "users"."lastname" = ? LIMIT ?[0m  [["firstname", "Devin"], ["lastname", "Arnold"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+Completed 200 OK in 6ms (Views: 2.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/trails" for ::1 at 2019-08-02 19:29:04 -0600
+Processing by TrailsController#create as JSON
+  Parameters: {"name"=>"Baldy's Skirt", "difficulty"=>"Difficulty: blue", "rating"=>"Rating: 4", "url"=>"https://www.powderproject.com/trail/7001366/baldys-skirt", "img"=>"https://cdn-files.apstatic.com/ski/7001592_small_1553895177.jpg", "length"=>"Length: 0.7 miles", "eChange"=>"Elevation change: +0/-649", "user_id"=>"1", "trail"=>{"name"=>"Baldy's Skirt", "difficulty"=>"Difficulty: blue", "rating"=>"Rating: 4", "url"=>"https://www.powderproject.com/trail/7001366/baldys-skirt", "img"=>"https://cdn-files.apstatic.com/ski/7001592_small_1553895177.jpg", "length"=>"Length: 0.7 miles", "eChange"=>"Elevation change: +0/-649", "user_id"=>"1"}}
+Started GET "/users/1" for ::1 at 2019-08-02 19:29:04 -0600
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[36mTrail Create (0.4ms)[0m  [1m[32mINSERT INTO "trails" ("name", "difficulty", "rating", "url", "img", "length", "eChange", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Baldy's Skirt"], ["difficulty", "Difficulty: blue"], ["rating", "Rating: 4"], ["url", "https://www.powderproject.com/trail/7001366/baldys-skirt"], ["img", "https://cdn-files.apstatic.com/ski/7001592_small_1553895177.jpg"], ["length", "Length: 0.7 miles"], ["eChange", "Elevation change: +0/-649"], ["user_id", 1], ["created_at", "2019-08-03 01:29:04.559659"], ["updated_at", "2019-08-03 01:29:04.559659"]]
+  ↳ app/controllers/trails_controller.rb:9
+Processing by UsersController#show as */*
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/trails_controller.rb:9
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 2.2ms)
+
+
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8
+  [1m[36mTrail Load (0.2ms)[0m  [1m[34mSELECT "trails".* FROM "trails" WHERE "trails"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:9
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/trails" for ::1 at 2019-08-02 19:29:04 -0600
+Started GET "/users/1" for ::1 at 2019-08-02 19:29:04 -0600
+Processing by TrailsController#create as JSON
+Processing by UsersController#show as */*
+  Parameters: {"name"=>"Baldy's Skirt", "difficulty"=>"Difficulty: blue", "rating"=>"Rating: 4", "url"=>"https://www.powderproject.com/trail/7001366/baldys-skirt", "img"=>"https://cdn-files.apstatic.com/ski/7001592_small_1553895177.jpg", "length"=>"Length: 0.7 miles", "eChange"=>"Elevation change: +0/-649", "user_id"=>"1", "trail"=>{"name"=>"Baldy's Skirt", "difficulty"=>"Difficulty: blue", "rating"=>"Rating: 4", "url"=>"https://www.powderproject.com/trail/7001366/baldys-skirt", "img"=>"https://cdn-files.apstatic.com/ski/7001592_small_1553895177.jpg", "length"=>"Length: 0.7 miles", "eChange"=>"Elevation change: +0/-649", "user_id"=>"1"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/trails_controller.rb:9
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trails_controller.rb:9
+  ↳ app/controllers/users_controller.rb:8
+  [1m[36mTrail Load (0.1ms)[0m  [1m[34mSELECT "trails".* FROM "trails" WHERE "trails"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTrail Create (0.3ms)[0m  [1m[32mINSERT INTO "trails" ("name", "difficulty", "rating", "url", "img", "length", "eChange", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Baldy's Skirt"], ["difficulty", "Difficulty: blue"], ["rating", "Rating: 4"], ["url", "https://www.powderproject.com/trail/7001366/baldys-skirt"], ["img", "https://cdn-files.apstatic.com/ski/7001592_small_1553895177.jpg"], ["length", "Length: 0.7 miles"], ["eChange", "Elevation change: +0/-649"], ["user_id", 1], ["created_at", "2019-08-03 01:29:04.803215"], ["updated_at", "2019-08-03 01:29:04.803215"]]
+  ↳ app/controllers/trails_controller.rb:9
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.2ms)
+
+
+  ↳ app/controllers/trails_controller.rb:9
+Completed 200 OK in 35ms (Views: 0.3ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/trails" for ::1 at 2019-08-02 19:29:08 -0600
+Started GET "/users/1" for ::1 at 2019-08-02 19:29:08 -0600
+Processing by TrailsController#create as JSON
+  Parameters: {"name"=>"Baldy's Skirt", "difficulty"=>"Difficulty: blue", "rating"=>"Rating: 4", "url"=>"https://www.powderproject.com/trail/7001366/baldys-skirt", "img"=>"https://cdn-files.apstatic.com/ski/7001592_small_1553895177.jpg", "length"=>"Length: 0.7 miles", "eChange"=>"Elevation change: +0/-649", "user_id"=>"1", "trail"=>{"name"=>"Baldy's Skirt", "difficulty"=>"Difficulty: blue", "rating"=>"Rating: 4", "url"=>"https://www.powderproject.com/trail/7001366/baldys-skirt", "img"=>"https://cdn-files.apstatic.com/ski/7001592_small_1553895177.jpg", "length"=>"Length: 0.7 miles", "eChange"=>"Elevation change: +0/-649", "user_id"=>"1"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by UsersController#show as */*
+  ↳ app/controllers/trails_controller.rb:9
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/trails_controller.rb:9
+  ↳ app/controllers/users_controller.rb:8
+  [1m[36mTrail Load (0.1ms)[0m  [1m[34mSELECT "trails".* FROM "trails" WHERE "trails"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTrail Create (0.3ms)[0m  [1m[32mINSERT INTO "trails" ("name", "difficulty", "rating", "url", "img", "length", "eChange", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Baldy's Skirt"], ["difficulty", "Difficulty: blue"], ["rating", "Rating: 4"], ["url", "https://www.powderproject.com/trail/7001366/baldys-skirt"], ["img", "https://cdn-files.apstatic.com/ski/7001592_small_1553895177.jpg"], ["length", "Length: 0.7 miles"], ["eChange", "Elevation change: +0/-649"], ["user_id", 1], ["created_at", "2019-08-03 01:29:08.979581"], ["updated_at", "2019-08-03 01:29:08.979581"]]
+  ↳ app/controllers/users_controller.rb:9
+  ↳ app/controllers/trails_controller.rb:9
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/trails_controller.rb:9
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/trails" for ::1 at 2019-08-02 19:29:10 -0600
+Started GET "/users/1" for ::1 at 2019-08-02 19:29:10 -0600
+Processing by TrailsController#create as JSON
+  Parameters: {"name"=>"Baldy's Skirt", "difficulty"=>"Difficulty: blue", "rating"=>"Rating: 4", "url"=>"https://www.powderproject.com/trail/7001366/baldys-skirt", "img"=>"https://cdn-files.apstatic.com/ski/7001592_small_1553895177.jpg", "length"=>"Length: 0.7 miles", "eChange"=>"Elevation change: +0/-649", "user_id"=>"1", "trail"=>{"name"=>"Baldy's Skirt", "difficulty"=>"Difficulty: blue", "rating"=>"Rating: 4", "url"=>"https://www.powderproject.com/trail/7001366/baldys-skirt", "img"=>"https://cdn-files.apstatic.com/ski/7001592_small_1553895177.jpg", "length"=>"Length: 0.7 miles", "eChange"=>"Elevation change: +0/-649", "user_id"=>"1"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/trails_controller.rb:9
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[36mTrail Create (0.3ms)[0m  [1m[32mINSERT INTO "trails" ("name", "difficulty", "rating", "url", "img", "length", "eChange", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Baldy's Skirt"], ["difficulty", "Difficulty: blue"], ["rating", "Rating: 4"], ["url", "https://www.powderproject.com/trail/7001366/baldys-skirt"], ["img", "https://cdn-files.apstatic.com/ski/7001592_small_1553895177.jpg"], ["length", "Length: 0.7 miles"], ["eChange", "Elevation change: +0/-649"], ["user_id", 1], ["created_at", "2019-08-03 01:29:10.181773"], ["updated_at", "2019-08-03 01:29:10.181773"]]
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[36mTrail Load (0.1ms)[0m  [1m[34mSELECT "trails".* FROM "trails" WHERE "trails"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/trails_controller.rb:9
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/trails" for ::1 at 2019-08-02 19:29:33 -0600
+Processing by TrailsController#create as JSON
+Started GET "/users/5" for ::1 at 2019-08-02 19:29:33 -0600
+  Parameters: {"name"=>"Porcupine Rim", "difficulty"=>"Difficulty: black", "rating"=>"Rating: 4.7", "url"=>"https://www.mtbproject.com/trail/157369/porcupine-rim", "img"=>"https://img.youtube.com/vi/t5nCdl3OLBo/hqdefault.jpg", "length"=>"Length: 14.7 miles", "eChange"=>"Elevation change: +1195/-2962", "user_id"=>"5", "trail"=>{"name"=>"Porcupine Rim", "difficulty"=>"Difficulty: black", "rating"=>"Rating: 4.7", "url"=>"https://www.mtbproject.com/trail/157369/porcupine-rim", "img"=>"https://img.youtube.com/vi/t5nCdl3OLBo/hqdefault.jpg", "length"=>"Length: 14.7 miles", "eChange"=>"Elevation change: +1195/-2962", "user_id"=>"5"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/trails_controller.rb:9
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[36mTrail Create (0.3ms)[0m  [1m[32mINSERT INTO "trails" ("name", "difficulty", "rating", "url", "img", "length", "eChange", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Porcupine Rim"], ["difficulty", "Difficulty: black"], ["rating", "Rating: 4.7"], ["url", "https://www.mtbproject.com/trail/157369/porcupine-rim"], ["img", "https://img.youtube.com/vi/t5nCdl3OLBo/hqdefault.jpg"], ["length", "Length: 14.7 miles"], ["eChange", "Elevation change: +1195/-2962"], ["user_id", 5], ["created_at", "2019-08-03 01:29:33.652909"], ["updated_at", "2019-08-03 01:29:33.652909"]]
+  ↳ app/controllers/users_controller.rb:8
+  ↳ app/controllers/trails_controller.rb:9
+  [1m[36mTrail Load (0.1ms)[0m  [1m[34mSELECT "trails".* FROM "trails" WHERE "trails"."user_id" = ?[0m  [["user_id", 5]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:9
+  ↳ app/controllers/trails_controller.rb:9
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.2ms)
+
+
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/users" for ::1 at 2019-08-02 19:37:50 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>"", "user"=>{"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>""}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."firstname" = ? AND "users"."lastname" = ? LIMIT ?[0m  [["firstname", "Devin"], ["lastname", "Arnold"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/users" for ::1 at 2019-08-02 19:38:05 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"firstname"=>"Test", "lastname"=>"User", "note"=>"", "user"=>{"firstname"=>"Test", "lastname"=>"User", "note"=>""}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."firstname" = ? AND "users"."lastname" = ? LIMIT ?[0m  [["firstname", "Test"], ["lastname", "User"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/users" for ::1 at 2019-08-05 06:54:19 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"firstname"=>"", "lastname"=>"", "note"=>"", "user"=>{"firstname"=>"", "lastname"=>"", "note"=>""}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."firstname" = ? AND "users"."lastname" = ? LIMIT ?[0m  [["firstname", ""], ["lastname", ""], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+Completed 200 OK in 11ms (Views: 5.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/2" for ::1 at 2019-08-05 06:54:27 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8
+  [1m[36mTrail Load (0.2ms)[0m  [1m[34mSELECT "trails".* FROM "trails" WHERE "trails"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:9
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for ::1 at 2019-08-05 06:55:23 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>"", "user"=>{"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>""}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."firstname" = ? AND "users"."lastname" = ? LIMIT ?[0m  [["firstname", "Devin"], ["lastname", "Arnold"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/users" for ::1 at 2019-08-05 06:55:23 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"firstname"=>"", "lastname"=>"", "note"=>"", "user"=>{"firstname"=>"", "lastname"=>"", "note"=>""}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."firstname" = ? AND "users"."lastname" = ? LIMIT ?[0m  [["firstname", ""], ["lastname", ""], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/users/2" for ::1 at 2019-08-05 06:56:09 -0600
+Processing by UsersController#update as JSON
+  Parameters: {"firstname"=>"", "lastname"=>"", "note"=>"- Bring lots of water!", "id"=>"2", "user"=>{"firstname"=>"", "lastname"=>"", "note"=>"- Bring lots of water!"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "note" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["note", "- Bring lots of water!"], ["updated_at", "2019-08-05 12:56:09.944512"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:23
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:23
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 2.5ms)
+
+
+Started PATCH "/users/2" for ::1 at 2019-08-05 06:56:10 -0600
+Processing by UsersController#update as JSON
+  Parameters: {"firstname"=>"", "lastname"=>"", "note"=>"- Bring lots of water!", "id"=>"2", "user"=>{"firstname"=>"", "lastname"=>"", "note"=>"- Bring lots of water!"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:23
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:23
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for ::1 at 2019-08-05 06:56:16 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>"", "user"=>{"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>""}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."firstname" = ? AND "users"."lastname" = ? LIMIT ?[0m  [["firstname", "Devin"], ["lastname", "Arnold"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/users" for ::1 at 2019-08-05 06:56:16 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>"", "user"=>{"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>""}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."firstname" = ? AND "users"."lastname" = ? LIMIT ?[0m  [["firstname", "Devin"], ["lastname", "Arnold"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/users" for ::1 at 2019-08-05 06:56:18 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>"", "user"=>{"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>""}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."firstname" = ? AND "users"."lastname" = ? LIMIT ?[0m  [["firstname", "Devin"], ["lastname", "Arnold"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/users" for ::1 at 2019-08-05 06:56:18 -0600
+Processing by UsersController#create as JSON
+  Parameters: {"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>"", "user"=>{"firstname"=>"Devin", "lastname"=>"Arnold", "note"=>""}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."firstname" = ? AND "users"."lastname" = ? LIMIT ?[0m  [["firstname", "Devin"], ["lastname", "Arnold"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)
+
+
